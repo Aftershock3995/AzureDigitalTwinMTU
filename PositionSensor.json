@@ -1,0 +1,30 @@
+{
+ "@id": "dtmi:example:PositionSensor;1",
+ "@type": "Interface",
+ "displayName": "Position Sensor",
+ "contents": [
+  {
+   "@type": "Property",
+   "name": "Position",
+   "writable": true,
+   "schema": {
+    "@type": "Object",
+    "fields": [
+     {
+      "name": "x",
+      "schema": "double"
+     },
+     {
+      "name": "y",
+      "schema": "double"
+     },
+     {
+      "name": "z",
+      "schema": "double"
+     }
+    ]
+   }
+  }
+ ],
+ "@context": "dtmi:dtdl:context;2"
+}
