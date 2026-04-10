@@ -1,0 +1,76 @@
+const { ManagedIdentityCredential } = require("@azure/identity");
+const { DigitalTwinsClient } = require("@azure/digital-twins-core");
+
+
+const adtInstanceUrl = "https://CNCPlasmaCutterDigitalTwin.api.eus2.digitaltwins.azure.net";
+
+
+// Create once
+const credential = new ManagedIdentityCredential();
+const client = new DigitalTwinsClient(adtInstanceUrl, credential);
+
+
+module.exports = async function (context, message) {
+    try {
+        context.log(`Received message: ${JSON.stringify(message)}`);
+
+
+        if (!message || !message.telemetry || !message.deviceId) {
+            context.log.warn("Invalid message format");
+            return;
+        }
+
+
+        const twinId = message.deviceId; // <-- dynamic
+        const telemetry = message.telemetry;
+
+
+        let updateOps = [];
+
+
+        // Handle Pressure (matches your example)
+        if (telemetry.Pressure !== undefined) {
+            const pressure = parseFloat(telemetry.Pressure);
+
+
+            context.log(`Updating Pressure for twin ${twinId}: ${pressure}`);
+
+
+            updateOps.push({
+                op: "replace",
+                path: "/Pressure",
+                value: pressure
+            });
+        }
+
+
+        // Handle Temperature (if present in other messages)
+        if (telemetry.Temperature !== undefined) {
+            const temperature = parseFloat(telemetry.Temperature);
+
+
+            context.log(`Updating Temperature for twin ${twinId}: ${temperature}`);
+
+
+            updateOps.push({
+                op: "replace",
+                path: "/Temperature",
+                value: temperature
+            });
+        }
+
+
+        if (updateOps.length === 0) {
+            context.log.warn("No valid telemetry fields found");
+            return;
+        }
+
+
+        await client.updateDigitalTwin(twinId, updateOps);
+        context.log(`Successfully updated twin '${twinId}'`);
+
+
+    } catch (err) {
+        context.log.error("Error processing message:", err);
+    }
+};
