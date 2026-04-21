@@ -1,14 +1,20 @@
 Dim x, y, z As Double
+Dim arcok As Integer
 Dim filePath As String
 
 filePath = "C:\Mach3\macros\THC300M3\coords.txt"
 
-x = GetOEMDRO(800) ' X Position
-y = GetOEMDRO(801) ' Y Position
-z = GetOEMDRO(802) ' Z Position
+x = GetOEMDRO(800) ' X
+y = GetOEMDRO(801) ' Y
+z = GetOEMDRO(802) ' Z
+
+arcok = GetOEMLED(825) ' Example LED ID
 
 Open filePath For Output As #1
-Print #1, x & "," & y & "," & z
+Print #1, x & "," & y & "," & z & "," & arcok
 Close #1
 
-Message "System File Sync Active: X= " & Format(x, "0.000") & " Y= " & Format(y, "0.000") & " Z= " & Format(z, "0.000")
+Message "Sync: X=" & Format(x, "0.000") & _
+        " Y=" & Format(y, "0.000") & _
+        " Z=" & Format(z, "0.000") & _
+        " ArcOK=" & arcok
