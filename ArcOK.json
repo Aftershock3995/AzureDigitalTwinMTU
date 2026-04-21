@@ -1,0 +1,14 @@
+{
+ "@id": "dtmi:example:ArcOkSensor;1",
+ "@type": "Interface",
+ "displayName": "Arc OK Sensor",
+ "contents": [
+  {
+   "@type": "Property",
+   "name": "ArcOk",
+   "schema": "boolean",
+   "writable": true
+  }
+ ],
+ "@context": "dtmi:dtdl:context;2"
+}

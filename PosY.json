@@ -1,0 +1,14 @@
+{
+ "@id": "dtmi:example:PositionY;1",
+ "@type": "Interface",
+ "displayName": "Position Y",
+ "contents": [
+  {
+   "@type": "Property",
+   "name": "y",
+   "schema": "double",
+   "writable": true
+  }
+ ],
+ "@context": "dtmi:dtdl:context;2"
+}

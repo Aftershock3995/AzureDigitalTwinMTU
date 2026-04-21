@@ -1,0 +1,14 @@
+{
+ "@id": "dtmi:example:PressureSensor;1",
+ "@type": "Interface",
+ "displayName": "Pressure Sensor",
+ "contents": [
+  {
+   "@type": "Property",
+   "name": "Pressure",
+   "schema": "double",
+   "writable": true
+  }
+ ],
+ "@context": "dtmi:dtdl:context;2"
+}

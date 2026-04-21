@@ -1,0 +1,33 @@
+{
+ "@id": "dtmi:example:CNCPlasmaCutter;1",
+ "@type": "Interface",
+ "displayName": "CNC Plasma Cutter",
+ "contents": [
+  {
+   "@type": "Property",
+   "name": "serialNumber",
+   "schema": "string"
+  },
+  {
+   "@type": "Relationship",
+   "name": "hasPressureSensor",
+   "target": "dtmi:example:PressureSensor;1"
+  },
+  {
+   "@type": "Relationship",
+   "name": "hasArcOkSensor",
+   "target": "dtmi:example:ArcOkSensor;1"
+  },
+  {
+   "@type": "Relationship",
+   "name": "hasPositionSensor",
+   "target": "dtmi:example:PositionSensor;1"
+  },
+  {
+   "@type": "Relationship",
+   "name": "hasTemperatureSensor",
+   "target": "dtmi:example:TemperatureSensor;1"
+  }
+ ],
+ "@context": "dtmi:dtdl:context;2"
+}

@@ -1,0 +1,14 @@
+{
+ "@id": "dtmi:example:PositionZ;1",
+ "@type": "Interface",
+ "displayName": "Position Z",
+ "contents": [
+  {
+   "@type": "Property",
+   "name": "z",
+   "schema": "double",
+   "writable": true
+  }
+ ],
+ "@context": "dtmi:dtdl:context;2"
+}

@@ -1,0 +1,14 @@
+{
+ "@id": "dtmi:example:TemperatureSensor;1",
+ "@type": "Interface",
+ "displayName": "Temperature Sensor",
+ "contents": [
+  {
+   "@type": "Property",
+   "name": "Temperature",
+   "schema": "double",
+   "writable": true
+  }
+ ],
+ "@context": "dtmi:dtdl:context;2"
+}
